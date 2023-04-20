@@ -4,6 +4,7 @@ import 'package:flutter_app/model/common_model.dart';
 import 'package:flutter_app/model/grid_nav_model.dart';
 import 'package:flutter_app/model/home_model.dart';
 import 'package:flutter_app/model/sales_box_model.dart';
+import 'package:flutter_app/pages/search_page.dart';
 import 'package:flutter_app/widgets/grid_nav.dart';
 import 'package:flutter_app/widgets/loading_container.dart';
 import 'package:flutter_app/widgets/local_nav.dart';
@@ -33,8 +34,34 @@ class _HomePageState extends State<HomePage> {
   List<CommonModel> localNavList = [];
   List<CommonModel> subNavList = [];
   List<CommonModel> bannerList = [];
-  late GridModel gridNavList;
-  late SalesBoxModel salesBox;
+  GridNavItem itemModel = GridNavItem(
+    endColor: '',
+    startColor: '',
+    item1: CommonModel(
+        icon: '', title: '', url: '', statusBarColor: '', hideAppBar: false),
+    item4: CommonModel(
+        icon: '', title: '', url: '', statusBarColor: '', hideAppBar: false),
+    item2: CommonModel(
+        icon: '', title: '', url: '', statusBarColor: '', hideAppBar: false),
+    item3: CommonModel(
+        icon: '', title: '', url: '', statusBarColor: '', hideAppBar: false),
+    mainItem: CommonModel(
+        icon: '', title: '', url: '', statusBarColor: '', hideAppBar: false),
+  );
+  late GridModel gridNavList =
+      GridModel(hotel: itemModel, flight: itemModel, travel: itemModel);
+  CommonModel salesItemMdoel = CommonModel(
+      icon: '', title: '', url: '', statusBarColor: '', hideAppBar: true);
+
+  late SalesBoxModel salesBox = SalesBoxModel(
+      icon: '',
+      moreUrl: '',
+      bigCard1: salesItemMdoel,
+      bigCard2: salesItemMdoel,
+      smallCard1: salesItemMdoel,
+      smallCard2: salesItemMdoel,
+      smallCard3: salesItemMdoel,
+      smallCard4: salesItemMdoel);
   bool _isLoading = true;
 
   _onScroll(double offset) {
@@ -184,6 +211,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _jumpToSearch() {}
+  _jumpToSearch() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => 
+    const SearchPage(hideLeft: true, hint: SEARCH_BAR_DEFAULT_TEXT,)));
+  }
   _jumpToSpeak() {}
 }

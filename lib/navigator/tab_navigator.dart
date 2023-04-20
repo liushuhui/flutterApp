@@ -21,11 +21,12 @@ class _TabNavigatorState extends State<TabNavigator> {
     return Scaffold(
       body: PageView(
         controller: _controller,
+        physics: const NeverScrollableScrollPhysics(),
         children: const <Widget>[
           HomePage(),
-          SearchPage(),
+          SearchPage(hideLeft: true,),
+          TravelPage(),
           MyPage(),
-          TravelPage()
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -49,11 +50,11 @@ class _TabNavigatorState extends State<TabNavigator> {
           BottomNavigationBarItem(
               icon: Icon(Icons.camera_alt, color: _defaultColor),
               activeIcon: Icon(Icons.camera_alt, color: _activeColor),
-              label: '我的'),
+              label: '旅拍'),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_balance, color: _defaultColor),
               activeIcon: Icon(Icons.account_balance, color: _activeColor),
-              label: '等级'),
+              label: '我的'),
         ],
       ),
     );

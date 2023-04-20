@@ -4,7 +4,7 @@ import 'package:flutter_app/model/sales_box_model.dart';
 import 'package:flutter_app/widgets/webview.dart';
 
 class SalesBox extends StatelessWidget {
-  SalesBoxModel salesBox;
+  late SalesBoxModel salesBox;
   SalesBox({super.key, required this.salesBox});
 
   @override
